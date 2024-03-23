@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        @font-face {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            src: url();
+        }
+
+        body {
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: bisque;
+        }
+
+        .sidebar {
+            background-color: sienna;
+            color: #fff;
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: left;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .content {
+            flex: 2;
+            padding: 20px;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            margin-bottom: 10px;
+            border: black solid 1px;
+            padding: 15px;
+            text-decoration: none;
+            color: #212529;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: left;
+        }
+
+        button {
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            justify-content: end;
+        }
+
+        .titleName {
+            font-size: 20px;
+        }
+
+        .dropdown-menu {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('sidebar.ejs')%>
+
+    <div class="content">
+        <div class="list-group">
+            <h1>Essays</h1>
+            <h2>Find what you are interested in.</h2>
+
+            <!-- Replace this with your dynamic data rendering logic -->
+            <% essays.forEach((essay, index) => { %>
+                <a href="" class="list-group-item">
+                    <!-- Content -->
+                    <div>
+                        <h6 class="titleName"><u><%= essay.title %></u></h6>
+                        <p><%= essay.content %></p>
+                    </div>
+                    <div class="button-container">
+                        <form action="/edit/<%= essay.id %>" method="get">
+                            <button class="btn btn-primary" type="submit">Edit</button>
+                        </form>
+                        <form action="/read/<%= essay.id %>" method="get">
+                            <button class="btn btn-outline-secondary" type="submit">Read</button>
+                        </form>
+                        <form action="/delete/<%= essay.id %>" method="get">
+                            <button class="btn btn-outline-secondary" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </a>                
+            <% }) %>
+        </div>
+    </div>
+</body>
+
+</html>
