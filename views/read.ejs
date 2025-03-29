@@ -1,59 +1,18 @@
-<!-- read.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= essay.title %></title>
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    padding: 2rem;
-    background-color: bisque;
-}
-
-h1 {
-    color: black; /* Bootstrap blue color */
-}
-
-form {
-    margin-top: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
-
-button {
-    background-color: black; /* Bootstrap blue color */
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: whitesmoke; /* Slightly darker blue on hover */
-}
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1><%= essay.title %></h1>
-    <hr/>
-    <p><%= essay.content %></p>
+    <%- include('sidebar.ejs') %>
+
+    <div class="content">
+        <h1><%= essay.title %></h1>
+        <hr/>
+        <p class="essay-text"><%= essay.content %></p>
+    </div>
 </body>
 </html>

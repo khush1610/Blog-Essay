@@ -1,5 +1,3 @@
-<!-- newEssay.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,69 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Essay</title>
-    <style>
-        @font-face {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            src: url();
-    }
-        
-    body {
-    color: #333;
-    padding: 2rem;
-    background-color: bisque;
-}
-
-h1 {
-    color: black; /* Bootstrap blue color */
-}
-
-form {
-    margin-top: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
-
-button {
-    background-color: black; /* Bootstrap blue color */
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: whitesmoke; /* Slightly darker blue on hover */
-}
-
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-    <div class="container">
-        <h2>Create a New Essay</h2>
+    <%- include('sidebar.ejs') %>
+
+    <div class="content">
+        <h2> ✍️ Jot down. Create.</h2>
 
         <form action="/new" method="post">
             <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
+            <input type="text" id="title" name="title" required class="input-field">
 
             <label for="content">Content:</label>
-            <textarea id="content" name="content" rows="4" required></textarea>
+            <textarea id="content" name="content" rows="4" required class="text-area"></textarea>
 
-            <button type="submit">Save</button>
+            <div class="button-container">
+                <button type="submit">Save</button>
+                <a href="/Essays" class="cancel-btn">Cancel</a>
+            </div>
         </form>
     </div>
 </body>

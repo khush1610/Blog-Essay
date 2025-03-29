@@ -1,72 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Essay</title>
-    <style>
-        @font-face {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            src: url();
-        }
-        
-        body {
-            color: #333;
-            padding: 2rem;
-            background-color: bisque;
-        }
-
-        h1 {
-            color: black; /* Bootstrap blue color */
-        }
-
-        form {
-            margin-top: 1rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-        }
-
-        button {
-            background-color: black; /* Bootstrap blue color */
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: whitesmoke; /* Slightly darker blue on hover */
-        }
-
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-    <h2>Delete Essay</h2>
+    <%- include('sidebar.ejs') %>
 
-    <div>
-        <p>Are you sure you want to delete the following essay?</p>
-        <h3><%= essay.title %></h3>
-        <p><%= essay.content %></p>
+    <div class="content">
+        <h2>🗑 Delete Essay</h2>
+        <br>
 
-        <form method="POST" action="/delete/<%= essay.id %>">
-            <!-- Add a CSRF token if needed -->
-            <input type="submit" value="Confirm Delete">
-            <input href="/Essays" type="submit" value="Cancel" />
-        </form>
+        <div class="delete-container">
+
+            <h4>Are you sure you want to delete the following essay?</h4>
+            <h3><%= essay.title %></h3>
+            <p class="essay-content"><%= essay.content %></p>
+
+            <form method="POST" action="/delete/<%= essay.id %>">
+                <br>
+                <br>
+                <div class="button-container">
+                    <button type="submit" class="delete-btn">Confirm Delete</button>
+                    <a href="/Essays" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

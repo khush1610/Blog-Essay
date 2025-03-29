@@ -4,68 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Essay</title>
-    <style>
-        @font-face {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            src: url();
-        }
-
-        body {
-            color: #333;
-            padding: 2rem;
-            background-color: bisque;
-        }
-
-        h2 {
-            color: black; /* Bootstrap blue color */
-        }
-
-        form {
-            margin-top: 1rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-        }
-
-        button {
-            background-color: black; /* Bootstrap blue color */
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: whitesmoke; /* Slightly darker blue on hover */
-        }
-    </style>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h2>Edit Essay</h2>
+    <%- include('sidebar.ejs') %>
 
-    <form method="POST" action="/edit/<%= essay.id %>">
-        <label for="title">Update Title:</label>
-        <input type="text" id="title" name="updatedTitle" value="<%= essay.title %>">
+    <div class="content">
+        <h2>✂ Edit Essay</h2>
 
-        <label for="content">Update Content:</label>
-        <textarea id="content" name="updatedContent"><%= essay.content %></textarea>
+        <form method="POST" action="/edit/<%= essay.id %>">
+            <label for="title">Update Title:</label>
+            <br>
+            <input type="text" id="title" name="updatedTitle" value="<%= essay.title %>" class="input-field">
 
-        <input type="submit" value="Save Changes">
-        <input href="/Essays" type="submit" value="Cancel">
-    </form>
+            <label for="content">Update Content:</label>
+            <br>
+            <textarea id="content" name="updatedContent" class="text-area"><%= essay.content %></textarea>
+
+            <div class="button-container">
+                <button type="submit">Save Changes</button>
+                <a href="/Essays" class="cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
-
